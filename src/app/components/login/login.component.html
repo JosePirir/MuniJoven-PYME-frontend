@@ -1,0 +1,12 @@
+<form #login="ngForm" (ngSubmit) = "onSubmit()" class='mt-4'>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" name="username" type="text" class="form-control" aria-describedby="username" placeholder="Enter username ">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password" class="form-control" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
