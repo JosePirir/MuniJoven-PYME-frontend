@@ -60,7 +60,7 @@ export class RestUserService {
     }
     else
     {
-      this.token = null;
+      this.token as string;
     }
     return this.token;
   }
@@ -70,7 +70,6 @@ export class RestUserService {
     user.gettoken = token;
     let params = JSON.stringify(user)
     return this.http.post(this.uri + 'login', params, this.httpOptions).pipe(map(this.extractData));
-    
   }
 
   saveUser(user: any)

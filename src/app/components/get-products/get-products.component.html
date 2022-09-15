@@ -1,1 +1,16 @@
-<p>get-products works!</p>
+<div class="container mt-5">
+    <div class="row row-cols-3 g-3">
+        <div *ngFor="let item of products" class="col">
+            <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                  <img *ngIf="item.image == null" src="../../../assets/images/productDefault.png" alt="Imagen de productos">
+                  <img *ngIf="item.image" src="{{uri+'getImageProduct/'+item.image}}" alt="Imagen de productos">
+                  <h5 class="card-title mb-2">{{item.name}}</h5>
+                  <h6 class="card-subtitle mb-2" style="font-size: 25px">Q{{item.price}}</h6>
+                  <h6 class="card-subtitle mb-1" style="font-size: 20px">{{item.available}}</h6>
+                  <h6 class="card-subtitle mb-1" style="font-size: 20px">Talla: {{item.size}}</h6>
+                </div>
+              </div>            
+        </div>
+    </div>
+</div>
