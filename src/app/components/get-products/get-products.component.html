@@ -1,16 +1,50 @@
 <div class="container mt-5">
     <div class="row row-cols-3 g-3">
-        <div *ngFor="let item of products" class="col">
+        <div *ngFor="let item of products" class="col text-center">
             <div class="card" style="width: 18rem;">
                   <div class="card-body">
-                  <img *ngIf="item.image == null" src="../../../assets/images/productDefault.png" alt="Imagen de productos">
-                  <img *ngIf="item.image" src="{{uri+'getImageProduct/'+item.image}}" alt="Imagen de productos">
+                  <img *ngIf="item.image == null" src="../../../assets/images/productDefault.png" style="width: 150px" alt="Imagen de productos">
+                  <img *ngIf="item.image" src="{{uri+'getImageProduct/'+item.image}}" style="width: 150px" alt="Imagen de productos">
                   <h5 class="card-title mb-2">{{item.name}}</h5>
                   <h6 class="card-subtitle mb-2" style="font-size: 25px">Q{{item.price}}</h6>
                   <h6 class="card-subtitle mb-1" style="font-size: 20px">{{item.available}}</h6>
                   <h6 class="card-subtitle mb-1" style="font-size: 20px">Talla: {{item.size}}</h6>
+                  <button type="button" class="btn btn-warning" *ngIf="user.role == 'admin'" data-bs-toggle="modal" data-bs-target="#editar" (click)="obtenerData(item)">Editar Producto</button>
+                  <button type="button" class="btn btn-danger" *ngIf="user.role == 'admin'" (click)="obtenerData(item)" (click)="deleteProduct()">Eliminar Producto</button>
                 </div>
               </div>            
         </div>
     </div>
+
+    <div class="modal fade" tabindex="-1" id="editar" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Editar producto</h2>
+                </div>
+                <div class="modal-body">
+                    <label>Autor</label>
+                        <input [(ngModel)]="item.">
+                    <label>Foto Del Producto</label>
+                        <input type="file" name="image" id="inputImage" (change)="fileChange($event)">
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--    <div class="modal fade" tabindex="-1" id="eliminar" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h2>¿Seguro que quieres eliminar el producto? (Esta acción es irreversible).</h2>
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="borrarData()">Close</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteProduct()">Eliminar</button>
+            </div>
+            </div>
+        </div>
+    </div> -->
 </div>

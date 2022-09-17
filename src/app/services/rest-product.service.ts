@@ -58,6 +58,16 @@ export class RestProductService {
     .pipe(map(this.extractData));
   }
 
+  saveProduct(product:Product)
+  {
+    let params = JSON.stringify(product);
+    let headers = new HttpHeaders({
+      'Content-Type' :'application/json',
+      'Authorization' : this.restUser.getToken()
+    })
+    return this.http.post(this.uri + 'saveProduct',params, {headers:headers}).pipe(map(this.extractData));
+  }
+
   fileRequestProduct(idProduct: string, params: Array<string>, files:Array<File>, token:string, name:string)
   {
     return new Promise((resolve, reject)=>{
@@ -88,5 +98,23 @@ export class RestProductService {
     })
   }
 
-  
+  updateProduct(idProduct: string, product: Product)
+  {
+    let params = JSON.stringify(product);
+    let headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization': this.restUser.getToken()
+    })
+    return this.http.put(this.uri+'editProduct/'+idProduct, params, {headers:headers}).pipe(map(this.extractData));
+  }
+
+  deleteProduct(idProduct: string) /**/
+  {
+    let headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization': this.restUser.getToken()
+    })
+    return this.http.delete(this.uri+'deleteProduct/'+idProduct,{headers:headers}).pipe(map(this.extractData));
+  }
+
 }

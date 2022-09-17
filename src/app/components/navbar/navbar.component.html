@@ -7,11 +7,11 @@
       <!--Hacer que funcione el menú hamburguesa navbar, probablemente sea por las importaciones-->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li>
-            <a [routerLink]="['getProducts']">Ver Productos</a>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['getProducts']">Ver Productos</a>
           </li>
           <li class="nav-item" *ngIf="user.username == 'admin'" >
-            <a [routerLink]="['']">Agregar Productos</a>
+            <a class="nav-link" [routerLink]="['saveProduct']">Agregar Productos</a>
           </li>
         </ul>
       </div>

@@ -8,7 +8,7 @@ export class Product {
         public name: string,
         public price: number,
         public image : string,
-        public available: Boolean,
+        public available: string,
         public size: string,
         public gender: string
     ){}
