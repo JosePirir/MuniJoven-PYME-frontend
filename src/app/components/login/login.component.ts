@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
       {
         Swal.fire({
           icon: 'error',
-          title: 'Erro al iniciar sesión',
+          title: 'Error al iniciar sesión',
+          showConfirmButton: false,
           text: `${res.message}`
         })
       }
@@ -53,6 +54,7 @@ export class LoginComponent implements OnInit {
           Swal.fire({
             icon: 'success',
             title: 'Sesión iniciada',
+            showConfirmButton: false,
             text: 'Se ha iniciado la sesión con exito!'
           });
           this.router.navigateByUrl('');
@@ -62,7 +64,8 @@ export class LoginComponent implements OnInit {
     (error:any)=>
     Swal.fire({
       icon: 'error',
-      title: 'Erro al iniciar sesión',
+      title: 'Error al iniciar sesión',
+      showConfirmButton: false,
       text: `${error.error.message}`
     }))
   }

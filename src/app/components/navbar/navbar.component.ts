@@ -38,6 +38,7 @@ export class NavbarComponent implements OnInit {
     Swal.fire({
       icon: 'success',
       title: 'Sesión cerrada',
+      showConfirmButton: false,
       text: 'Se ha cerrado la sesión con exito! Vuelva pronto'
     });
   }

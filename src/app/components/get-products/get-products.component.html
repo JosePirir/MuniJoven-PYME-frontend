@@ -16,35 +16,36 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" id="editar" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" tabindex="-1" id="editar" aria-labelledby="editarLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title">Editar producto</h2>
                 </div>
                 <div class="modal-body">
-                    <label>Autor</label>
-                        <input [(ngModel)]="item.">
-                    <label>Foto Del Producto</label>
-                        <input type="file" name="image" id="inputImage" (change)="fileChange($event)">
+                    <label>Nombre</label>
+                       <input [(ngModel)]="product.name" name="name" class="form-control" type="text" placeholder="Ingrese el nombre">
+                    <label>Precio</label>
+                       <input [(ngModel)]="product.price" name="price" class="form-control" type="number" placeholder="Ingrese el precio">
+                    <label>Talla</label>
+                       <input [(ngModel)] ="product.size" name="size" class="form-control" type="text" placeholder="Ingrese la talla.">
+                    <label>Tipo</label>
+                        <select [(ngModel)]="product.gender" name="gender" class="form-control">
+                            <option *ngFor="let option of optionsGender" [value]="option">{{option}}</option>
+                        </select>
+                    <label>Disponibilidad</label>
+                        <select [(ngModel)]="product.available" name="available" class="form-control">
+                            <option *ngFor="let option of optionsAvailable" [value]="option">{{option}}</option>
+                        </select>
                 </div>
-                <div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary col-lg-3 mx-2" data-bs-dismiss="modal" (click)="borrarData()">Cancelar</button>
+                    <button type="button" class="btn btn-primary col-lg-3 mx-2" data-bs-dismiss="modal" (click)="updateProduct()" >Guardar cambios</button>
                 </div>
             </div>
         </div>
     </div>
-
-<!--    <div class="modal fade" tabindex="-1" id="eliminar" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h2>¿Seguro que quieres eliminar el producto? (Esta acción es irreversible).</h2>
-                </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="borrarData()">Close</button>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteProduct()">Eliminar</button>
-            </div>
-            </div>
-        </div>
-    </div> -->
 </div>
+
+                    <!--<label>Foto Del Producto</label>
+                       <input type="file" name="image" id="inputImage" (change)="fileChange($event)">-->

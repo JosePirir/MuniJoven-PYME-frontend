@@ -18,21 +18,26 @@ import Swal from 'sweetalert2';
 export class GetProductsComponent implements OnInit {
 
   products: any;
-  user : User;
+  user: User;
   product : Product;
   token: string;
   uri: string;
   filesToUpload: Array<File>;
+  optionsAvailable = ['Disponible', 'No Disponible', 'Reservado'];
+  optionsGender = ['Hombre', 'Mujer', 'Niño', 'Niña'];
+
 
 
   constructor(private restProduct:RestProductService, private restUser: RestUserService, private route: Router) {
     this.uri = CONNECTION.URI;
     this.token = this.restUser.getToken();
+    this.product = new Product('','',0,'','','',''); //para que lea las propiedades del modelo.
     this.user = this.restUser.getUser();
   }
 
   ngOnInit(): void {
     this.token = this.restUser.getToken();
+    //this.product = new Product('','',0,'','','','');
     this.products =  JSON.parse(localStorage.getItem('products') || '{}');
     this.getProducts();
   }
@@ -56,11 +61,13 @@ export class GetProductsComponent implements OnInit {
   {
     this.product = productSelected;
     localStorage.setItem('productSelected', JSON.stringify(productSelected));
+    console.log(productSelected);
   }
 
   borrarData()
   {
     localStorage.removeItem('productSelected');
+    this.getProducts();
   }
 
   uploadImage()
@@ -91,17 +98,29 @@ export class GetProductsComponent implements OnInit {
     this.restProduct.updateProduct(this.product._id, this.product).subscribe((res:any)=>{
       if(res)
       {
-        alert(res.message);
         this.getProducts();
-        this.borrarData();
-        this.products = res.products;
         localStorage.setItem('products', JSON.stringify(res.productUpdated));
+        Swal.fire({
+          icon:'success',
+          title: `${res.message}`,
+          showConfirmButton: false
+        })
       }
       else
       {
-        alert(res.message);
+        Swal.fire({
+          icon:'error',
+          title: `${res.message}`,
+          showConfirmButton: false
+        })
       }
-    },(error:any)=> alert(error.error.message));
+    },(error:any)=> 
+    Swal.fire({
+      icon:'error',
+      title: `${error.error.message}`,
+      showConfirmButton: false
+    })
+    );
   }
 
   deleteProduct()

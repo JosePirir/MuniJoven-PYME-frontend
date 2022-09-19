@@ -4,11 +4,9 @@
     <span class="input-group">Precio</span>
     <input [(ngModel)]="product.price" class="form-control" min="0" name="price" type="number" step="0.1">
     <span class="input-group">Talla</span>
-    <select [(ngModel)]="product.size" name="size">
-        <option *ngFor="let option of optionsSize" [value]="option">{{option}}</option>
-    </select>
+    <input [(ngModel)]="product.size" class="form-control" name="size" type="text" placeholder="Ingrese la talla del producto">
     <span class="input-group">Tipo</span>
-    <select [(ngModel)]="product.gender" name="gender">
+    <select [(ngModel)]="product.gender" name="gender" class="form-control">
         <option *ngFor="let option of optionsGender" [value]="option">{{option}}</option>
     </select>
     <br><br>

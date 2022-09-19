@@ -11,7 +11,7 @@ import { GetProductsComponent } from './components/get-products/get-products.com
 import { SaveProductComponent } from './components/save-product/save-product.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,12 +25,13 @@ import { FormsModule } from '@angular/forms';
     NotFoundComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
-    HttpClientModule,
     APP_ROUTING,
-    FormsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {  }
