@@ -1,6 +1,7 @@
 <div class="container mt-3">
     <div class="row g-2">
-        <div *ngFor="let item of products" class="col-12 col-xs-8 col-sm-6 col-md-4 col-lg-3 text-center">
+        <input [(ngModel)]="search" type="search" name="search" class="form-control me-2" placeholder="Buscar" aria-label="search">
+        <div *ngFor="let item of products | search:search" class="col-12 col-xs-8 col-sm-6 col-md-4 col-lg-3 text-center">
             <div class="card">
                   <div class="card-body">
                   <img *ngIf="item.image == null" src="../../../assets/images/productDefault.png" style="width: 80%" alt="Imagen de productos">

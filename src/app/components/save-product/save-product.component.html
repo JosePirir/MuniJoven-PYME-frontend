@@ -1,14 +1,23 @@
-<form class="text-center" #register="ngForm" (ngSubmit)="onSubmit(register)">
+<form class="text-center" #register="ngForm" (ngSubmit)="onSubmit(register)" class="mt-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+    <div class="card-body p-5 text-center">
+    <h2 class="fw-bold mb-2 text-uppercase">Agregar un producto</h2>
     <span class="input-group">Nombre</span>
-    <input [(ngModel)]="product.name" class="form-control" name="name" type="text" placeholder="Ingrese el nombre del producto">
+    <input [(ngModel)]="product.name" class="form-control" name="name" type="text">
     <span class="input-group">Precio</span>
-    <input [(ngModel)]="product.price" class="form-control" min="0" name="price" type="number" step="0.1">
+    <input [(ngModel)]="product.price" class="form-control" placeholder="1.0" min="0" name="price" type="number" step="0.1">
     <span class="input-group">Talla</span>
-    <input [(ngModel)]="product.size" class="form-control" name="size" type="text" placeholder="Ingrese la talla del producto">
+    <input [(ngModel)]="product.size" class="form-control" name="size" type="text">
     <span class="input-group">Tipo</span>
     <select [(ngModel)]="product.gender" name="gender" class="form-control">
         <option *ngFor="let option of optionsGender" [value]="option">{{option}}</option>
     </select>
-    <br><br>
-    <button type="submit" class="btn btn-primary">Agregar el Producto</button>
+    <br>
+    <button type="submit" class="btn btn-outline-light">Agregar el Producto</button>
+    </div>
+    </div>
+    </div>
+    </div>
 </form>

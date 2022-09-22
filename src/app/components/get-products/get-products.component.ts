@@ -23,6 +23,7 @@ export class GetProductsComponent implements OnInit {
   token: string;
   uri: string;
   filesToUpload: Array<File>;
+  search: any;
   optionsAvailable = ['Disponible', 'No Disponible', 'Reservado'];
   optionsGender = ['Hombre', 'Mujer', 'Niño', 'Niña'];
 
@@ -37,7 +38,6 @@ export class GetProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.restUser.getToken();
-    //this.product = new Product('','',0,'','','','');
     this.products =  JSON.parse(localStorage.getItem('products') || '{}');
     this.getProducts();
   }
@@ -61,7 +61,6 @@ export class GetProductsComponent implements OnInit {
   {
     this.product = productSelected;
     localStorage.setItem('productSelected', JSON.stringify(productSelected));
-    console.log(productSelected);
   }
 
   borrarData()
@@ -95,7 +94,6 @@ export class GetProductsComponent implements OnInit {
   fileChange(fileInput:any)
   {
     this.filesToUpload = <Array<File>>fileInput.target.files;
-    console.log(this.filesToUpload);
   }
 
   updateProduct()

@@ -12,6 +12,7 @@ import { SaveProductComponent } from './components/save-product/save-product.com
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     GetProductsComponent,
     SaveProductComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SearchPipe
   ],
   imports: [
     FormsModule,
