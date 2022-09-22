@@ -1,16 +1,17 @@
-<div class="container mt-5">
-    <div class="row row-cols-3 g-3">
-        <div *ngFor="let item of products" class="col text-center">
-            <div class="card" style="width: 18rem;">
+<div class="container mt-3">
+    <div class="row g-2">
+        <div *ngFor="let item of products" class="col-12 col-xs-8 col-sm-6 col-md-4 col-lg-3 text-center">
+            <div class="card">
                   <div class="card-body">
-                  <img *ngIf="item.image == null" src="../../../assets/images/productDefault.png" style="width: 150px" alt="Imagen de productos">
-                  <img *ngIf="item.image" src="{{uri+'getImageProduct/'+item.image}}" style="width: 150px" alt="Imagen de productos">
+                  <img *ngIf="item.image == null" src="../../../assets/images/productDefault.png" style="width: 80%" alt="Imagen de productos">
+                  <img *ngIf="item.image" src="{{uri+'getImageProduct/'+item.image}}" style="width: 80%" alt="Imagen de productos">
                   <h5 class="card-title mb-2">{{item.name}}</h5>
-                  <h6 class="card-subtitle mb-2" style="font-size: 25px">Q{{item.price}}</h6>
+                  <h6 class="card-subtitle mb-2" style="font-size: 25px">Q{{item.price}}</h6> <!--font-size: responsive buscar-->
                   <h6 class="card-subtitle mb-1" style="font-size: 20px">{{item.available}}</h6>
                   <h6 class="card-subtitle mb-1" style="font-size: 20px">Talla: {{item.size}}</h6>
-                  <button type="button" class="btn btn-warning" *ngIf="user.role == 'admin'" data-bs-toggle="modal" data-bs-target="#editar" (click)="obtenerData(item)">Editar Producto</button>
-                  <button type="button" class="btn btn-danger" *ngIf="user.role == 'admin'" (click)="obtenerData(item)" (click)="deleteProduct()">Eliminar Producto</button>
+                  <button type="button" class="btn btn-warning mt-2" *ngIf="user.role == 'admin'" data-bs-toggle="modal" data-bs-target="#editar" (click)="obtenerData(item)" style="width: 70%">Editar Producto</button>
+                  <button type="button" class="btn btn-success mt-2" *ngIf="user.role == 'admin'" data-bs-toggle="modal" data-bs-target="#image" (click)="obtenerData(item)" style="width: 70%">Foto Producto</button>
+                  <button type="button" class="btn btn-danger mt-2" *ngIf="user.role == 'admin'" (click)="obtenerData(item)" (click)="deleteProduct()" style="width: 70%">Eliminar Producto</button>
                 </div>
               </div>            
         </div>
@@ -45,7 +46,28 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" tabindex="-1" id="image" aria-labelledby="editarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Editar producto</h2>
+                </div>
+                <div class="modal-body">
+                    <label>Foto Del Producto:</label>
+                    <br>
+                    <input type="file" name="image" id="inputImage" class="form-control" (change)="fileChange($event)">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary col-lg-3 mx-2" data-bs-dismiss="modal" (click)="borrarData()">Cancelar</button>
+                    <button type="button" class="btn btn-primary col-lg-3 mx-2" data-bs-dismiss="modal" (click)="uploadImage()">Actualizar Imagen</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-                    <!--<label>Foto Del Producto</label>
+     
+
+<!--<label>Foto Del Producto</label>
                        <input type="file" name="image" id="inputImage" (change)="fileChange($event)">-->

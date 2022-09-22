@@ -73,7 +73,7 @@ export class RestProductService {
     return new Promise((resolve, reject)=>{
       let formData:any = new FormData();
       let xhr = new XMLHttpRequest();
-      let uri = this.uri+'uploadImageProduct/'+idProduct;
+      let uri = this.uri+'uploadProductImage/'+idProduct;
 
       for(let i=0; i<files.length;i++)
       {

@@ -1,12 +1,21 @@
-<form #login="ngForm" (ngSubmit) = "onSubmit()" class='mt-4'>
-    <div class="form-group">
-      <label for="username">Username:</label>
-      <input [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" name="username" type="text" class="form-control" aria-describedby="username" placeholder="Enter username ">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<form #login="ngForm" (ngSubmit)="onSubmit()" class="mt-5">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+  <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+  <div class="card bg-dark text-white" style="border-radius: 1rem;">
+  <div class="card-body p-5 text-center">
+  <h2 class="fw-bold mb-2 text-uppercase">Iniciar Sesión</h2>
+  <p class="text-white-50 mb-5">Por favor ingrese su usuario y contraseña</p>
+    <div class="form-outline form-white mb-4">
+      <input [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" name="username" type="text" class="form-control" aria-describedby="username">
+      <label for="username">Nombre de Usuario</label>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password" class="form-control" placeholder="Password">
+    <div class="form-outline form-white mb-4">
+      <input [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password" class="form-control" >
+      <label class="form-label" for="exampleInputPassword1">Contraseña</label>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-outline-light">Ingresar</button>
+  </div>
+  </div>
+  </div>
+  </div>
 </form>

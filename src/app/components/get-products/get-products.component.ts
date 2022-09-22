@@ -77,7 +77,12 @@ export class GetProductsComponent implements OnInit {
       {
         this.product.image = res.productImage;
         localStorage.setItem('product',JSON.stringify(this.product));
-        alert('Imagen subida con exito :D');
+        Swal.fire({
+          icon:'success',
+          title: "Imagen subida con exito",
+          showConfirmButton: false
+        })
+        this.borrarData();
       }
       else
       {
@@ -130,6 +135,7 @@ export class GetProductsComponent implements OnInit {
       text: "No se podrá revertir.",
       icon: 'warning',
       showCancelButton: true,
+      reverseButtons: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, borrarlo',
