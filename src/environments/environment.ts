@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase : {
+    apiKey: "AIzaSyChvMDdAHqkUJ5htBSBUC1SkAPCjLml920",
+    authDomain: "terramoda-fe03b.firebaseapp.com",
+    databaseURL: "https://terramoda-fe03b-default-rtdb.firebaseio.com",
+    projectId: "terramoda-fe03b",
+    storageBucket: "terramoda-fe03b.appspot.com",
+    messagingSenderId: "183257820272",
+    appId: "1:183257820272:web:1fe50bd5380160c517d8b5"
+  }
 };
 
 /*
