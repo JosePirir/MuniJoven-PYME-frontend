@@ -15,11 +15,11 @@ export class SaveProductComponent implements OnInit {
   public product: Product;
   public token;
   public user;
-  public optionsGender = ['Hombre', 'Mujer', 'Niño', 'Niña'];
+  public optionsGender = ['Hombre', 'Mujer','Unisex','Niño', 'Niña'];
 
   constructor(private restProduct:RestProductService, private restUser:RestUserService, private router:Router)
   {
-    this.product = new Product('','',0,'','','','');
+    this.product = new Product('','',0.00,'','','','','','','','');
     this.token = restUser.getToken();
     this.user = restUser.getUser();
   }
@@ -37,7 +37,7 @@ export class SaveProductComponent implements OnInit {
           title: `${res.message}`,
           showConfirmButton: false
         })
-        this.product = new Product('','',0,'','','','');
+        this.product = new Product('','',0.00,'','','','','','','','');
         statusForm.reset();
         this.router.navigateByUrl('getProducts');
       }

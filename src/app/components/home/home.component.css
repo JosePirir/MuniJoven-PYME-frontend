@@ -1,0 +1,14 @@
+*{
+    font-family: 'Handlee', cursive;
+    font-size: 20px;
+}
+
+.titulo{
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+}
+
+.contenedor
+{
+    background: rgba(0, 0, 0, 0.3)
+}

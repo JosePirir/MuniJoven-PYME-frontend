@@ -1,3 +1,3 @@
 export const CONNECTION = {
-    URI : 'http://terramoda-backend.herokuapp.com/api/'
+    URI : 'https://terramoda-backend.herokuapp.com/api/'
 }

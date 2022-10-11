@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { getDownloadURL, listAll, ref, Storage, uploadBytes } from '@angular/fire/storage';
 import { Product } from 'src/app/models/product';
 import { User } from 'src/app/models/user';
 import { CONNECTION } from 'src/app/services/global';
@@ -12,11 +12,10 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-get-products',
   templateUrl: './get-products.component.html',
-  styles: [
+  styleUrls: [ './get-products.component.css'
   ]
 })
 export class GetProductsComponent implements OnInit {
-
   products: any;
   user: User;
   product : Product;
@@ -25,14 +24,14 @@ export class GetProductsComponent implements OnInit {
   filesToUpload: Array<File>;
   search: any;
   optionsAvailable = ['Disponible', 'No Disponible', 'Reservado'];
-  optionsGender = ['Hombre', 'Mujer', 'Niño', 'Niña'];
+  optionsGender = ['Hombre', 'Mujer', 'Unisex','Niño', 'Niña'];
 
 
 
-  constructor(private restProduct:RestProductService, private restUser: RestUserService, private route: Router) {
+  constructor(private restProduct:RestProductService, private restUser: RestUserService, private route: Router, private storage: Storage) {
     this.uri = CONNECTION.URI;
     this.token = this.restUser.getToken();
-    this.product = new Product('','',0,'','','',''); //para que lea las propiedades del modelo.
+    this.product = new Product('','',0.00,'','','','','','','',''); //para que lea las propiedades del modelo.
     this.user = this.restUser.getUser();
   }
 
@@ -40,6 +39,7 @@ export class GetProductsComponent implements OnInit {
     this.token = this.restUser.getToken();
     this.products =  JSON.parse(localStorage.getItem('products') || '{}');
     this.getProducts();
+    //this.getImages();
   }
 
   getProducts()
@@ -69,7 +69,7 @@ export class GetProductsComponent implements OnInit {
     this.getProducts();
   }
 
-  uploadImage()
+  /*uploadImage()
   {
     this.restProduct.fileRequestProduct(this.product._id, [], this.filesToUpload, this.token, 'image').then((res:any)=>{
       if(res.product)
@@ -88,13 +88,43 @@ export class GetProductsComponent implements OnInit {
         alert(res.message);
       }
     },(error:any)=>alert(error.error.message))
+  }*/
+
+  selectedImage($event: any,number: number){
+    var file= $event.target.files[0];
+    var imgRef = ref(this.storage, `images/${file.name}`)
+    uploadBytes(imgRef, file)
+      .then(response => {
+        getDownloadURL(response.ref).then(function(downloadURL:any){
+          console.log(downloadURL);
+          $event = downloadURL;
+          (<HTMLInputElement>document.getElementById(`address${number}`)).value= downloadURL;
+          return downloadURL;
+        })
+      })
+
+      .catch(error=> console.log(error))
   }
 
-  
+  /*getImages()
+  {
+    const imagesRef = ref(this.storage, 'images');
+    listAll(imagesRef)
+    .then(async response =>{
+      console.log(response);
+      for(let item of response.items)
+      {
+        const url = await getDownloadURL(item);
+      }
+    })
+    .catch(error=> console.log(error));
+  }*/
+  /*
+
   fileChange(fileInput:any)
   {
     this.filesToUpload = <Array<File>>fileInput.target.files;
-  }
+  }*/
 
   updateProduct()
   {

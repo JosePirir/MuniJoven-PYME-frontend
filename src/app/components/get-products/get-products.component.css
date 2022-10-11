@@ -1,0 +1,28 @@
+.card-title{
+    font-family: 'Lobster', cursive;
+}
+
+.card-subtitle{
+    
+    font-family: 'Handlee', cursive;
+}
+
+.money{
+    font-family: 'Nova Mono', monospace;
+}
+
+.card{
+    background-color: white;
+    border: 1px solid rgba(256,255,255,0.46);
+    border-radius: 20px;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.53);
+}
+
+.card:hover{
+    box-shadow: 0px 0px 15px rgb(255, 238, 0);
+}
+
+img{
+    width:  95%;
+    height: 200px;
+}
