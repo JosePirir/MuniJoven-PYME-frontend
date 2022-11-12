@@ -1,12 +1,12 @@
 <div class="container mt-3 mb-3">
     <div class="row g-2">
         <input [(ngModel)]="search" type="search" name="search" class="form-control me-2 shadow-sm" placeholder="Buscar" aria-label="search">
-        <div *ngFor="let item of products | search:search" class="col-12 col-xs-8 col-sm-6 col-md-4 col-lg-3 text-center">
+        <div *ngFor="let item of products | search:search" class="col-12 col-xs-8 col-sm-6 col-md-4 col-lg-3 mt-4 text-center">
             <div class="card">
                   <div class="card-body shadow">
                     <div data-bs-toggle="modal" data-bs-target="#get" (click)="obtenerData(item)">
-                        <img *ngIf="item.image1 == null" src="../../../assets/images/productDefault.png" alt="Imagen de productos">
-                        <img *ngIf="item.image1" src="{{item.image1}}" alt="Imagen de productos">
+                        <img class="mb-2" *ngIf="item.image1 == null" src="../../../assets/images/productDefault.png" alt="Imagen de productos">
+                        <img class="mb-2" *ngIf="item.image1" src="{{item.image1}}" alt="Imagen de productos">
                         <h5 class="card-title mb-2">{{item.name}}</h5>
                         <h6 class="money card-subtitle mb-2" style="font-size: 25px">Q{{item.price}}</h6> <!--font-size: responsive buscar-->
                         <h6 class="card-subtitle mb-1" style="font-size: 20px">Talla: {{item.size}}</h6>
@@ -81,9 +81,9 @@
     </div>
 </div>
 
-<div class="mt-6 modal fade" tabindex="-1" id="get" aria-labelledby="getLabel" aria-hidden="true">
+<div class="mt-6 modal fade" tabindex="-1" id="get" aria-labelledby="getLabel" aria-hidden="true" data-bs-dismiss="alert" aria-label="Close">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+        <div class="information-fade modal-content">
             <div class="modal-header">
                 <h3 class="card-title">Información del producto:</h3>
             </div>

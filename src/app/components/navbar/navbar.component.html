@@ -1,6 +1,9 @@
-<nav class="navbar sticky-top navbar-expand-sm w-100 navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-expand-sm w-100 navbar-light" style="background-color: #e5e5f7; color: #000;">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['']">Terramoda</a>
+    <a class="navbar-brand" [routerLink]="['']">
+      <img src="../../../assets/images/logo.png" alt="" height="30" width="25" class="d-inline-block align-text-top">
+      Terramoda
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -17,10 +20,10 @@
     </div>
     <ul class="navbar-nav navbar-right">
       <li *ngIf="token == 'admin' || token == undefined">
-        <a class="btn btn-outline-primary" [routerLink]="['login']">Login</a>
+        <a class="btn btn-outline-dark" [routerLink]="['login']">Login</a>
       </li>
       <li *ngIf="token != null || token != undefined">
-        <a class="btn btn-outline-primary" (click)="logOut()">Logout</a>
+        <a class="btn btn-outline-dark" (click)="logOut()">Logout</a>
       </li>
     </ul>
   </div>
